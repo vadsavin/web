@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+</body>
+</html>
+<head>
+	<link rel="stylesheet" href="{{ STATIC_URL }}/static/article.css">
+</head>
+
+<body class="archive">
+	<div class="header">
+		<img src="{{ STATIC_URL }}/static/-.png" height="50" width="auto" />
+	</div>
+
+	<div style="float: right; color: #fff;">
+		<p><a style="color: #fff" href="{{ STATIC_URL }}/auth">Аутентификация</a></p>
+		<p><a style="color: #fff" href="{{ STATIC_URL }}/reg">Регистрация</a></p>
+		<p><a style="color: #fff" href="{{ STATIC_URL }}/article/new">Написать статью</a></p>
+	</div>
+
+	<div class="archive">
+		{% for post in posts %}
+		<div class="one-post">
+			<a class="post-title" href="{{ STATIC_URL }}/article/{{post.id}} ">
+				<h2 >{{ post.id }}. {{ post.title }} </h2>
+			</a>
+			<div class="article-info">
+				<div class="article-author">{{ post.author.username }}</div>
+				<div class="article-created- date">{{ post.created_date }}</div>
+			</div>
+			<p class="article-text">{{ post.get_excerpt }}</p>
+		</div>
+		{% endfor %}
+
+	</div>
+</body>
